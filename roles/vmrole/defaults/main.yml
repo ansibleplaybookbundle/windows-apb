@@ -1,0 +1,3 @@
+openshift: true
+release: true
+name: myvmdefault

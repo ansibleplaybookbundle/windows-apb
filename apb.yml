@@ -1,0 +1,44 @@
+version: 1.0
+name: windowsvm-apb
+description: APB for managing Windows Virtual Machine
+bindable: False
+async: optional
+tags:
+  - virtualization
+metadata:
+  displayName: Windows Virtual Machine (APB)
+  imageUrl: https://raw.githubusercontent.com/ansibleplaybookbundle/windows-apb/master/docs/imgs/icon.png
+plans:
+  - name: default
+    metadata:
+      displayName: Windows Virtual Machine
+      longDescription: Virtual machine with Windows
+    description: Windows Virtual Machine
+    free: True
+    parameters:
+      - name: admin_user
+        title: Openshift Admin User
+        type: string
+        required: true
+      - name: admin_password
+        title: Openshift Admin Password
+        type: string
+        display_type: password
+        required: true
+      - name: vmname
+        title: Name
+        type: string
+        display_type: text
+        required: true
+        default: myvm
+      - name: vmmemory
+        title: Memory (in MiB)
+        type: number
+        required: true
+        default: 64
+      - name: vmdiskimage
+        title: Disk Image
+        type: string
+        required: true
+        default: kubevirt/fedora-cloud-registry-disk-demo:latest
+

@@ -1,0 +1,6 @@
+---
+- include: "login.yml"
+- include: "generatevm.yml"
+
+- name: Create Virtual Machine
+  command: "oc apply -f /tmp/vm.yaml"
