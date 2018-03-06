@@ -1,6 +1,6 @@
 DOCKERHOST = docker.io
-DOCKERORG = rhelvm-apb
-IMAGENAME = rhelvm-apb
+DOCKERORG = windowsvm-apb
+IMAGENAME = windowsvm-apb
 TAG = latest
 USER=$(shell id -u)
 PWD=$(shell pwd)
