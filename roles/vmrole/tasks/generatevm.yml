@@ -1,8 +1,8 @@
 # Produces /tmp/vm.yaml based on selected plan and entered parameters
 ---
-# TODO: fetch template from API
+# TODO: fetch template from API, once loaded at deployment
 # TODO: Proper Linux and Windows templates are not yet ready
 - name: Generate Windows VM {{ vmname }} with {{ vmmemory }}M of memory
   template:
-    src: vm-windows.yml.j2
+    src: vm-template-windows2012r2.yaml.j2
     dest: /tmp/vm.yaml
