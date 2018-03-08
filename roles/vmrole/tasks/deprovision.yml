@@ -2,5 +2,5 @@
 - include: "login.yml"
 - include: "generatevm.yml"
 
-- name: Delete Vitual Machine
+- name: Delete Virtual Machine
   command: oc delete -f /tmp/vm.yaml
