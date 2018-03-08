@@ -36,6 +36,11 @@ plans:
         type: number
         required: true
         default: 64
+      - name: vmcpus
+        title: CPUs
+        type: int
+        required: true
+        default: 1
       - name: vmdiskimage
         title: Disk Image
         type: string
