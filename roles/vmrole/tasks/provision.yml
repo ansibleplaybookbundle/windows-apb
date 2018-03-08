@@ -2,5 +2,8 @@
 - include: "login.yml"
 - include: "generatevm.yml"
 
-- name: Create Virtual Machine
+- name: Create OfflineVirtualMachine from template
   command: "oc apply -f /tmp/vm.yaml"
+
+- name: Start the OfflineVirtualMachine
+  command: "oc patch offlinevirtualmachine {{ NAME }} --type=merge -p '{\"spec\":{\"running\": true}}'"

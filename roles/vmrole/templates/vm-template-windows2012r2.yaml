@@ -13,8 +13,16 @@ objects:
   kind: OfflineVirtualMachine
   metadata:
     name: ${NAME}
+    labels:
+      kubevirt-ovm: ovm-${NAME}
   spec:
+    selector:
+      matchLabels:
+        kubevirt-ovm: ovm-${NAME}
     template:
+      metadata:
+        labels:
+          kubevirt-ovm: ovm-${NAME}
       spec:
         domain:
           features:
@@ -36,12 +44,12 @@ objects:
                 tickPolicy: catchup
               hyperv: {}
           cpu:
-            cores: ${CPU_CORES}
+            cores: ${{CPU_CORES}}
           machine:
             type: q35
           resources:
             requests:
-              memory: ${MEMORY}
+              memory: ${{MEMORY}}
           devices:
             disks:
               - name: disk0
