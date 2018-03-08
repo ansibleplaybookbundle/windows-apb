@@ -25,25 +25,21 @@ plans:
         type: string
         display_type: password
         required: true
-      - name: vmname
+      - name: NAME
         title: Name
         type: string
         display_type: text
         required: true
         default: myvm
-      - name: vmmemory
+      - name: MEMORY
         title: Memory (in MiB)
         type: number
         required: true
         default: 64
-      - name: vmcpus
+      - name: CPU_CORES
         title: CPUs
-        type: int
+        type: enum
         required: true
-        default: 1
-      - name: vmdiskimage
-        title: Disk Image
-        type: string
-        required: true
-        default: kubevirt/fedora-cloud-registry-disk-demo:latest
+        default: '1'
+        enum: ['1', '2', '4' , '6' , '8', '12', '16', '32']
 
