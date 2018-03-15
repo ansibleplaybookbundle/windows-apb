@@ -1,3 +1,4 @@
 openshift: true
 release: true
-name: myvmdefault
+NAME: myvmdefault
+PVC_NAME: ''

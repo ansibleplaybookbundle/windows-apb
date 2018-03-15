@@ -42,4 +42,10 @@ plans:
         required: true
         default: '1'
         enum: ['1', '2', '4' , '6' , '8', '12', '16', '32']
+      - name: PVC_NAME
+        title: Pvc to use
+        type: string
+        display_type: text
+        required: true
+        default: ''
 

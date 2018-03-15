@@ -2,8 +2,12 @@
 - include: "login.yml"
 - include: "generatevm.yml"
 
+- name: Create Pvc from template
+  command: "oc apply -f /tmp/pvc.yaml"
+  when: not existing_pvc
+
 - name: Create OfflineVirtualMachine from template
-  command: "oc apply -f /tmp/vm.yaml"
+  command: "oc apply -f /tmp/ovm.yaml"
 
 - name: Start the OfflineVirtualMachine
   command: "oc patch offlinevirtualmachine {{ NAME }} --type=merge -p '{\"spec\":{\"running\": true}}'"
