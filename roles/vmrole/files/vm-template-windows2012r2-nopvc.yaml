@@ -14,15 +14,12 @@ objects:
   metadata:
     name: ${NAME}
     labels:
-      kubevirt-ovm: ovm-${NAME}
+      kubevirt.io/ovm: ovm-${NAME}
   spec:
-    selector:
-      matchLabels:
-        kubevirt-ovm: ovm-${NAME}
     template:
       metadata:
         labels:
-          kubevirt-ovm: ovm-${NAME}
+          kubevirt.io/ovm: ovm-${NAME}
       spec:
         domain:
           features:
@@ -57,18 +54,7 @@ objects:
         volumes:
           - name: disk0-pvc
             persistentVolumeClaim:
-              claimName: windows-vm-pvc-${NAME}
-- apiVersion: v1
-  kind: PersistentVolumeClaim
-  metadata:
-    name: windows-vm-pvc-${NAME}
-    #FIXME: add an annotation to specify which volume this pvc should be based on
-  spec:
-    accessModes:
-    - ReadWriteOnce
-    resources:
-      requests:
-        storage: 10Gi
+              claimName: ${PVC_NAME}
 parameters:
 - name: NAME
   description: Name for the new VM
@@ -78,3 +64,5 @@ parameters:
 - name: CPU_CORES
   description: Amount of cores
   value: "4"
+- name: PVC_NAME
+  description: PVC to use

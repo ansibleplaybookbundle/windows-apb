@@ -2,10 +2,23 @@
 ---
 # TODO: fetch template from API once loaded at deployment
 # TODO: Proper Linux and Windows templates are not yet ready, using the latest available
-- name: Fetch template
-  copy:
-    src: templates/vm-template-windows2012r2.yaml
-    dest: /tmp/vmtemplate.yaml
 
-- name: Generate virtual machine {{ NAME }} with {{ MEMORY }}M of memory
+- name: Fetch vm openshift template
+  copy:
+    src: vm-template-windows2012r2-nopvc.yaml
+    dest: /tmp/vmtemplate.yaml
+  when: PVC_NAME != ''
+
+- name: Fetch vm openshift template
+  copy:
+    src: vm-template-windows2012r2.yaml
+    dest: /tmp/vmtemplate.yaml
+  when: PVC_NAME != ''
+
+- name: Generate vm {{ NAME }} yaml
   shell: "oc process -f /tmp/vmtemplate.yaml -pNAME={{ NAME }} -pMEMORY={{ MEMORY }}M -pCPU_CORES={{ CPU_CORES }} > /tmp/vm.yaml"
+  when: PVC_NAME == ''
+
+- name: Generate vm {{ NAME }} yaml
+  shell: "oc process -f /tmp/ovmtemplate.yaml -pNAME={{ NAME }} -pMEMORY={{ MEMORY }}M -pCPU_CORES={{ CPU_CORES }} -pPVC_NAME={{ PVC_NAME }} > /tmp/vm.yaml"
+  when: PVC_NAME != ''
