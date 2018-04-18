@@ -6,7 +6,7 @@ async: optional
 tags:
   - virtualization
 metadata:
-  displayName: Windows Virtual Machine (APB)
+  displayName: Windows Virtual Machine
   imageUrl: https://raw.githubusercontent.com/ansibleplaybookbundle/windows-apb/master/docs/imgs/icon.png
 plans:
   - name: default
