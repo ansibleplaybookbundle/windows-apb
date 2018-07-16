@@ -20,5 +20,5 @@
   when: PVC_NAME == ''
 
 - name: Generate vm {{ NAME }} yaml
-  shell: "oc process -f /tmp/ovmtemplate.yaml -pNAME={{ NAME }} -pMEMORY={{ MEMORY }}Mi -pCPU_CORES={{ CPU_CORES }} -pPVC_NAME={{ PVC_NAME }} > /tmp/vm.yaml"
+  shell: "oc process -f /tmp/vmtemplate.yaml -pNAME={{ NAME }} -pMEMORY={{ MEMORY }}Mi -pCPU_CORES={{ CPU_CORES }} -pPVC_NAME={{ PVC_NAME }} > /tmp/vm.yaml"
   when: PVC_NAME != ''
